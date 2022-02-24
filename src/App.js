@@ -2,6 +2,7 @@ import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import Header from './my components/Header';
 import {Todos} from './my components/Todos';
 import {Footer} from './my components/Footer';  
+import { AddTodo } from './my components/AddTodo';
 import React, { useState } from 'react';
 function App() {
 
@@ -9,9 +10,19 @@ function App() {
     console.log("i am delete o todo" , todo);
     /* let index = todos.indexOf(todo);
     todos.splice(index , 1); */
-    setTodos(todos.filter(()=>{
-      
+    setTodos(todos.filter((e)=>{
+      return e!==todo;
     }))
+  }
+  const addTodo =(title , desc )=>{
+    console.log("I am Adding Todo" , title , desc);
+    let sno=todos[todos.length-1].sno + 1;
+    const myTodo = {
+      sno: sno,
+      title : title,
+      desc : desc,
+
+    }
   }
   const [todos, setTodos] = useState([
     { 
@@ -34,8 +45,8 @@ function App() {
   return (
     <>
       <Header title="My Todo List"  searchBar={false}/>
+      <AddTodo addTodo={addTodo} />
       <Todos todos={todos} onDelete={onDelete}/>
-      <Footer />
     </>
   );
 }
