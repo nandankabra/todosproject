@@ -45,7 +45,7 @@ function App() {
   return (
     <>
       <Header title="My Todo List"  searchBar={false}/>
-      <AddTodo addTodo={addTodo} />
+      {/* <AddTodo addTodo={addTodo} /> */}
       <Todos todos={todos} onDelete={onDelete}/>
     </>
   );
